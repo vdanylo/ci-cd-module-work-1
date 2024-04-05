@@ -1,3 +1,30 @@
+def filter_file(
+        input_file: str,
+        keyword: str,
+        output_file: str
+) -> str:
+    """Filter lines in an input file based on a keyword and write the filtered lines to an output file.
+
+    Args:
+        input_file (str): The path to the input file.
+        keyword (str): The keyword used for filtering lines.
+        output_file (str): The path to the output file.
+
+    Returns:
+        str: The path to the output file.
+
+    Raises:
+        FileNotFoundError: If the input file does not exist.
+    """
+    try:
+        lines = get_input_lines(input_file)
+        filtered_lines = filter_lines_by(lines, keyword)
+        write_filter_result(output_file, filtered_lines)
+        return output_file
+    except FileNotFoundError:
+        return ""
+
+
 def filter_lines_by(lines: [str], keyword: str) -> [str]:
     """Filter lines based on a keyword.
 
@@ -12,7 +39,6 @@ def filter_lines_by(lines: [str], keyword: str) -> [str]:
     return filtered_lines
 
 
-
 def get_input_lines(input_file: str) -> [str]:
     """Read lines from an input file.
 
@@ -25,6 +51,7 @@ def get_input_lines(input_file: str) -> [str]:
     with open(input_file, 'r') as file:
         lines = file.readlines()
     return lines
+
 
 def write_filter_result(output_file: str, filtered_lines: [str]) -> None:
     """Write filtered lines to an output file.
