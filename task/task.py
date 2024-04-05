@@ -1,3 +1,18 @@
+def filter_lines_by(lines: [str], keyword: str) -> [str]:
+    """Filter lines based on a keyword.
+
+    Args:
+        lines (list): A list of input lines.
+        keyword (str): The keyword used for filtering lines.
+
+    Returns:
+        list: A list of filtered lines that contain the keyword (case-insensitive).
+    """
+    filtered_lines = [line for line in lines if keyword in line.lower()]
+    return filtered_lines
+
+
+
 def get_input_lines(input_file: str) -> [str]:
     """Read lines from an input file.
 
